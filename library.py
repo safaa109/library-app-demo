@@ -22,11 +22,18 @@ class Library:
         for book in self.books:
             print(book)
         print("---------------------------\n")
-
+#////////// Develop the new feature://///////////
     def borrow_book(self, title):
-        pass
-    
-
+        for i in self.books:
+            if i.title==title:
+                if not i.is_borrowed:
+                    i.is_borrowed=True
+                    print(f"'{i.title}' borrowed successfully.")
+                else:
+                    print(f"{i.title} is already borrowed.")  
+                return
+        print(f"{title} not found in the library.")
+#////////////////////////////////////////////////
 if __name__ == "__main__":
     my_library = Library("City Central Library")
     
@@ -35,5 +42,7 @@ if __name__ == "__main__":
     
     my_library.add_book(book1)
     my_library.add_book(book2)
-    
+    #//////////////////////////////////////
+    my_library.borrow_book("Harry Potter")
+    #//////////////////////////////////////
     my_library.list_books()
